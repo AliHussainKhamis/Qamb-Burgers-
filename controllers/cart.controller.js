@@ -32,3 +32,14 @@ export async function cartRemoveItem(req, res) {
     res.json(cart)
   } catch (e) { res.status(500).json({ error: e.message }) }
 }
+
+export async function cartClear(req, res) {
+  try {
+    const userId = req.params.userId
+    const cart = await Cart.findOne({ user: userId })
+    if (!cart) return res.status(404).json({ error: 'Cart not found' })
+    cart.items = []
+    await cart.save()
+    res.json(cart)
+  } catch (e) { res.status(500).json({ error: e.message }) }
+}
