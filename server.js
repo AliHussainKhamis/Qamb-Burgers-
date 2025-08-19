@@ -5,7 +5,7 @@ import morgan from 'morgan'
 import cors from 'cors'
 
 import menuRoutes from './routes/menu.routes.js'
-
+import authRoutes from './routes/auth.route.js'
 
 
 dotenv.config()
@@ -26,6 +26,7 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 // routes
+app.use('/api/auth', authRoutes)
 app.use('/api/menu', menuRoutes)
 
 const PORT = process.env.PORT || 3000
