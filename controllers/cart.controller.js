@@ -6,7 +6,7 @@ export async function cartGet(req, res) {
     const found = await Cart.findOne({ user: userId })
     const cart = found || await Cart.create({ user: userId, items: [] })
     res.json(cart)
-  } catch (e) { res.status(500).json({ error: e.message }) }
+  } catch (error) { res.status(500).json({ error: error.message }) }
 }
 
 export async function cartAddItem(req, res) {
@@ -17,7 +17,7 @@ export async function cartAddItem(req, res) {
     cart.items.push({ menuItem: menuItemId, quantity: quantity || 1 })
     await cart.save()
     res.json(cart)
-  } catch (e) { res.status(500).json({ error: e.message }) }
+  } catch (error) { res.status(500).json({ error: error.message }) }
 }
 
 export async function cartRemoveItem(req, res) {
@@ -30,7 +30,7 @@ export async function cartRemoveItem(req, res) {
     line.deleteOne()
     await cart.save()
     res.json(cart)
-  } catch (e) { res.status(500).json({ error: e.message }) }
+  } catch (error) { res.status(500).json({ error: error.message }) }
 }
 
 export async function cartClear(req, res) {
@@ -41,5 +41,5 @@ export async function cartClear(req, res) {
     cart.items = []
     await cart.save()
     res.json(cart)
-  } catch (e) { res.status(500).json({ error: e.message }) }
+  } catch (error) { res.status(500).json({ error: error.message }) }
 }
