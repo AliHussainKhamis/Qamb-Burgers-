@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const MenuSchema = new mongoose.Schema({
   name: { type: String, required: true },
-//   slug: { type: String, unique: true },add
+  slug: { type: String, unique: true },
   description: String,
   imageUrl: String,
   category: { type: String, required: true },
