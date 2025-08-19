@@ -44,3 +44,19 @@ export async function menuCreate(req, res) {
   }
 }
 
+export async function menuUpdate(req, res) {
+  try {
+    const id = req.params.id
+    const body = req.body
+
+    const updated = await Menu.findByIdAndUpdate(id, body, { new: true })
+    if (!updated) {
+      return res.status(404).json({ error: 'Not found' })
+    }
+
+    res.status(200).json(updated)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+}
+
