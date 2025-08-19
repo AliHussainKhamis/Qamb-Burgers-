@@ -26,7 +26,6 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 // routes
-
 app.use('/api/menu', menuRoutes)
 
 const PORT = process.env.PORT || 3000
