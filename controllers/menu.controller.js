@@ -34,3 +34,13 @@ export async function menuShow(req, res) {
   }
 }
 
+export async function menuCreate(req, res) {
+  try {
+    const body = req.body
+    const created = await Menu.create(body)
+    res.status(201).json(created)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+}
+
