@@ -1,6 +1,5 @@
 import Order from '../models/order.model.js'
 
-// create a new order
 export async function orderCreate(req, res) {
   try {
     const { user, items } = req.body
@@ -12,7 +11,7 @@ export async function orderCreate(req, res) {
     let total = 0
     for (let i = 0; i < items.length; i++) {
       const price = Number(items[i].price) || 0
-      const qty = Number(items[i].qty) || 0
+      const qty = Number(items[i].qty) || 0 // so it doesn't give undefined
       total += price * qty
     }
 
